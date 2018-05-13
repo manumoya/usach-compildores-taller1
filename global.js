@@ -3,7 +3,8 @@ var info = {
 	simbolos:[],
 	estado_inicial: 0,
 	estados_finales:[],
-	transiciones:[]
+	transiciones:[],
+	matriz:[]
 };
 
 var getNro_estados = function() {
@@ -46,6 +47,14 @@ var getTransiciones = function(param) {
 	return info.transiciones; 
 }
 
+var getMatriz = function() {
+	return info.matriz;
+}
+
+var setMatriz  = function(param) {
+	info.matriz = param;
+}
+
 module.exports = {	
 	getNro_estados: getNro_estados,
 	setNro_estados: setNro_estados,
@@ -56,5 +65,7 @@ module.exports = {
 	getEstado_finales: getEstado_finales,
 	setEstado_finales: setEstado_finales,
 	push_transiciones: push_transiciones,
-	getTransiciones: getTransiciones
+	getTransiciones: getTransiciones,
+	getMatriz: getMatriz,
+	setMatriz: setMatriz
 };

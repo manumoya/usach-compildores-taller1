@@ -28,23 +28,6 @@ var read = function(callback){
 	}); 
 }
 	
-	/*var cont=1;
-	fs.readFile('af.txt', 'utf-8', function(err, data){
-		if(err) {
-	    	console.log('error en lectura de archivo: ', err);
-		} else {
-
-			 for (i=0; i < data.length; ++i)
-        		console.log(data[i]); 
-
-        	
-						
-			
-		}
-		cont=cont+1;
-	}); */
-//}
-
 module.exports = {	
 	read: read
 };

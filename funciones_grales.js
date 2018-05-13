@@ -2,6 +2,7 @@
 /* almacenar valores en un array*/
 var almacenar_en_array = function(valores){
 	var arr = [];
+	console.log("valores.length: "+ valores.length);
 	for (i=0; i < valores.length; ++i){
 		arr.push(valores[i]);
 	}
