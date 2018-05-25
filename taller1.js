@@ -1,7 +1,9 @@
 const readFile = require('./readFile.js');
 const global   = require('./global.js');
 const matriz   = require('./matriz.js');
+const autom    = require('./automata.js');
 
+/* llear archivo .txt*/
 readFile.read( function (err, result){
  	// error
  	if (err) {
@@ -11,6 +13,7 @@ readFile.read( function (err, result){
     console.log("est: " + global.getNro_estados() );
 });
 
+/* ver valores leidos de archivo*/
 var estados = global.getNro_estados(); 
 var simbolos = global.getSimbolos();
 
@@ -24,24 +27,17 @@ for (var i=0; i < arr_transiciones.length; i++){
 		console.log("transicion["+ i+"] " + arr_transiciones[i].orig +" / "+ 
 					arr_transiciones[i].simb +" / "+ arr_transiciones[i].final);
 }
+console.log("\n");
 
-
+/* llenado de matriz */
 var arr_matriz = matriz.crear(estados);
 matriz.preparar(arr_matriz);
 matriz.llenar(arr_transiciones, arr_matriz);
 matriz.ver(arr_matriz);
+global.setMatriz(arr_matriz);
+
 /*  validar si es un AFD */
-//var arr_transi_x_simb;
 
-/*
-console.log("arr transi: "+ cant_simbolos.length);
-for (i=0; i < cant_simbolos.length; ++i){
-	console.log(arr_transi_x_simb[i][0]);
-}
-*/
-
-//console.log("esta: "+ estados);
-
-
+autom.cheq_si_efd();
 
 

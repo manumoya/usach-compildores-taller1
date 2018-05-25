@@ -13,7 +13,7 @@ var crear_matriz_ady = function(largo){
 
 var set_incial_matriz = function(matriz){
 	var largo = matriz.length;
-	console.log(largo);
+	//console.log(largo);
 	for (var i=0; i < largo; i++){
 		for (var j=0; j < largo; j++){	
 			matriz[i][j]="-";
