@@ -40,4 +40,8 @@ global.setMatriz(arr_matriz);
 autom.cheq_si_efd_por_estado();
 autom.cheq_si_efd_por_simbolo();
 
+var arrPila =[];
+arrPila.push([0][1]);
+autom.recorre_efnd(0, arrPila);
+
 
