@@ -37,7 +37,7 @@ matriz.ver(arr_matriz);
 global.setMatriz(arr_matriz);
 
 /*  validar si es un AFD */
-
-autom.cheq_si_efd();
+autom.cheq_si_efd_por_estado();
+autom.cheq_si_efd_por_simbolo();
 
 
