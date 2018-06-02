@@ -90,9 +90,6 @@ var simplificar_simbolos_agrupados = function(){
 			var simbolo = matriz_ady[i][j];
 			if (simbolo.length>1){
 				desagrupar(i, j, matriz_ady[i][j]);
-
-				//console.log ("simplificar ["+i+"]["+j+"]= "+ matriz[i][j]);
-
 			}
 		}
 	}	
