@@ -62,24 +62,54 @@ var recorre_efnd  = function(posNodoIni, arr_pila){
   /* guarda todas las adyacencias del nodo*/
   var cont_ruta=0;
   for (var i=0; i<largo_matriz; i++){
-    var valor = matriz_ady[posNodoIni][i];
     var nom_nodo=i;
-    //var nom_nodo=matriz_ady[i][0];
-
-    //console.log("valor: " + valor);
+    var valor = matriz_ady[posNodoIni][i];
+    
+    
     //console.log("nom_nodo: " + nom_nodo + " / valor: "+ valor);
     
-    //char nom_nodo = matriz_grafo_din[0][i];
+   
     var tiene_ciclo = pila.existe_ciclo(arr_pila,nom_nodo);
     //console.log("ciclo? " + tiene_ciclo);
 
     if (valor != "-" && !tiene_ciclo){
       console.log("Nombre nodo " + nom_nodo + " / valor nodo: "+  valor); 
-      nuevas_rutas.push(i);
+      nuevas_rutas.push(nom_nodo);
       cont_ruta++;
     }
 
-  } 	
+    
+  } 
+
+  if (cont_ruta==0){ // no tien adyacencia
+  	console.log("no adyacencia");
+  	arr_pila.pop();
+  }else{
+  	console.log("recursividad");
+
+  	/*for (var i=0; i<nuevas_rutas.length; i++){
+  		console.log(nuevas_rutas[i]);
+  	}*/
+  	
+  	for (var i=0; i<nuevas_rutas.length; i++){
+  		//var nom_nodo=i;
+  		//var valor = matriz_ady[posNodoIni][nom_nuevo_nodo];
+  		var nom_nuevo_nodo = nuevas_rutas[i];
+  		
+  		console.log("Nombre nodo " + nom_nuevo_nodo ); 
+
+  		console.log( nom_nuevo_nodo +" != "+ arr_pila[0]); 
+  		console.log( "largo pila: "  + arr_pila.length ); 
+
+  		if (nom_nuevo_nodo != arr_pila[0]){
+    		arr_pila.push(nom_nuevo_nodo);
+    		recorre_efnd(nom_nuevo_nodo, arr_pila);
+    	}
+
+  	}
+  	arr_pila.pop();
+  	
+  }	
 
 }
 
