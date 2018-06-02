@@ -43,6 +43,7 @@ autom.cheq_si_efd_por_simbolo();
 
 /* convertir en dfd */
 autom.simplificar_simbolos_agrupados();
+matriz.ver();
 
 //matriz.agregar_fila();
 //matriz.agregar_columa();

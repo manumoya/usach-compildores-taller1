@@ -69,11 +69,17 @@ var agregar_columa = function (){
 	}
 }
 
+var guardar_datos = function(ini, fin, simbolo){
+	var matriz_ady = global.getMatriz();
+	matriz_ady[ini][fin]=simbolo;
+}
+
 module.exports = {	
 	crear: crear_matriz_ady,
 	llenar: llenar_matriz_ady,
 	ver: ver_matriz_ady,
 	preparar:set_incial_matriz,
 	agregar_fila: agregar_fila, 
-	agregar_columa: agregar_columa
+	agregar_columa: agregar_columa,
+	guardar_datos: guardar_datos
 };
