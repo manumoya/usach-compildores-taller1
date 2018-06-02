@@ -1,17 +1,18 @@
-//const global   = require('./global.js');
+const global = require('./global.js');
 
-//const estados = global.getNro_estados(); 
 
 	
-var crear_matriz_ady = function(largo){
+var crear_matriz_ady = function(){
+	var largo = global.getNro_estados();
 	var matriz_ady = new Array(largo); 
 	for (var i=0; i < largo; i++){
 		matriz_ady[i] =new Array(largo);
 	}
-	return matriz_ady;
+	global.setMatriz(matriz_ady);
 }
 
-var set_incial_matriz = function(matriz){
+var set_incial_matriz = function(){
+	var matriz = global.getMatriz();
 	var largo = matriz.length;
 	//console.log(largo);
 	for (var i=0; i < largo; i++){
@@ -19,10 +20,12 @@ var set_incial_matriz = function(matriz){
 			matriz[i][j]="-";
 		}
 	}
+	global.setMatriz(matriz);
 }
 
-var llenar_matriz_ady = function(arr_transiciones, matriz_ady){
-	//var arr_transiciones = global.getTransiciones();
+var llenar_matriz_ady = function(){
+	var arr_transiciones = global.getTransiciones();
+	var matriz_ady = global.getMatriz();
 	for (var i=0; i< arr_transiciones.length; i++){
 		var orig = parseInt(arr_transiciones[i].orig);
 		var final = parseInt(arr_transiciones[i].final);
@@ -31,20 +34,46 @@ var llenar_matriz_ady = function(arr_transiciones, matriz_ady){
 	}	
 }
 
-var ver_matriz_ady = function(matriz_ady){
+var ver_matriz_ady = function(){
+	var matriz_ady = global.getMatriz();
 	var largo = matriz_ady.length;
-	//console.log(largo);
+	var largo_col = matriz_ady[0].length;
 	for (var i=0; i < largo; i++){
-		for (var j=0; j < largo; j++){	
+		for (var j=0; j < largo_col; j++){	
 			console.log("arr["+ i+"]["+ j+"]= "+ matriz_ady[i][j]);
 		}
 	}	
+}
+
+var get_incial_fila = function(largo){
+	fila = new Array(largo);
+	for (var i=0; i < largo; i++){
+		fila[i]="-";
+	}
+	return fila;
+}
+
+
+var agregar_fila = function (){
+	var matriz_ady = global.getMatriz();
+	var largo = matriz_ady.length;
+	var fila = get_incial_fila(largo);
+	matriz_ady.push(fila);
+}
+
+var agregar_columa = function (){
+	var matriz_ady = global.getMatriz();
+	var largo = matriz_ady.length;
+	for (var i=0; i < largo; i++){
+		matriz_ady[i].push("-");
+	}
 }
 
 module.exports = {	
 	crear: crear_matriz_ady,
 	llenar: llenar_matriz_ady,
 	ver: ver_matriz_ady,
-	preparar:set_incial_matriz 
-
+	preparar:set_incial_matriz,
+	agregar_fila: agregar_fila, 
+	agregar_columa: agregar_columa
 };

@@ -30,16 +30,21 @@ for (var i=0; i < arr_transiciones.length; i++){
 console.log("\n");
 
 /* llenado de matriz */
-var arr_matriz = matriz.crear(estados);
-matriz.preparar(arr_matriz);
-matriz.llenar(arr_transiciones, arr_matriz);
-matriz.ver(arr_matriz);
-global.setMatriz(arr_matriz);
+matriz.crear();
+matriz.preparar();
+matriz.llenar();
+matriz.ver();
+//global.setMatriz(arr_matriz);
 
 /*  validar si es un AFD */
 autom.cheq_si_efd_por_e();
 autom.cheq_si_efd_por_estado();
 autom.cheq_si_efd_por_simbolo();
+
+/* convertir en dfd */
+matriz.agregar_fila();
+matriz.agregar_columa();
+matriz.ver();
 
 /*
 var arrPila =[];
