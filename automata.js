@@ -62,52 +62,24 @@ var cheq_si_efd_por_simbolo = function(){
 var desagrupar = function(origen, final, grupo_simbolo){
 	console.log ("desagrupar ["+ origen +"]["+ final +"]= "+ grupo_simbolo);
 	var orig = origen;
-	//var fin = final;
-	
 	for (var i=0; i < grupo_simbolo.length; i++){
 		//console.log("simbolo:  "+ grupo_simbolo[i]);
 			
 		if (i != grupo_simbolo.length-1){
-			//console.log("distinto a ultimo:  "+ grupo_simbolo[i]);
-			
-			//console.log("crear nuevo fil y col");
-			//console.log("definir id_new_nodo");
-			//console.log("asociar a nodo nuevo orig: " + orig);
-			//console.log("orig = id_new_nodo ");
-			
 			matriz.agregar_fila();
 			matriz.agregar_columa();
-			//var matriz_ady = global.getMatriz();
-
 			var id_nuevo_nodo = global.getMatriz().length-1	;
-			console.log("asociar orig=" + orig+ " a nodo nuevo="+ id_nuevo_nodo  + " el simbolo "+ 
-				grupo_simbolo[i]);
-
+			console.log("asociar orig=" + orig+ " a nodo nuevo="+ id_nuevo_nodo  + " el simbolo "+ grupo_simbolo[i]);
 			matriz.guardar_datos(orig,id_nuevo_nodo,grupo_simbolo[i]);
-
 			orig = id_nuevo_nodo;
-
-			
 			console.log("============== ");
-
-
 		}else if (i == grupo_simbolo.length-1){
-			//console.log("ultimo simb:  "+ grupo_simbolo[i]);
-
 			console.log("asociar nodo nuevo= "+ id_nuevo_nodo + " a orig=" + final + " el simbolo "+ grupo_simbolo[i]);
 			console.log("============== ");
-
-			//var matriz_ady = global.getMatriz();
 			matriz.guardar_datos(id_nuevo_nodo,final,grupo_simbolo[i]);
-			//matriz_ady[orig][id_nuevo_nodo]=grupo_simbolo;
-			//matriz_ady[original][final]="-";
-
-			//global.getMatriz(matriz_ady);
 		}
 	}
 	matriz.guardar_datos(origen,final,"-");
-	
-
 }
 
 var simplificar_simbolos_agrupados = function(){
