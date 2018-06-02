@@ -42,9 +42,11 @@ autom.cheq_si_efd_por_estado();
 autom.cheq_si_efd_por_simbolo();
 
 /* convertir en dfd */
-matriz.agregar_fila();
-matriz.agregar_columa();
-matriz.ver();
+autom.simplificar_simbolos_agrupados();
+
+//matriz.agregar_fila();
+//matriz.agregar_columa();
+//matriz.ver();
 
 /*
 var arrPila =[];
