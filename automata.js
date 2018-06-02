@@ -1,6 +1,22 @@
 const global = require('./global.js');
 const pila = require('./pila.js');
 
+
+var cheq_si_efd_por_e = function(){
+	var matriz = global.getMatriz();
+	var largo = matriz.length;
+	//var simbolos=[];
+	for (var i=0; i < largo; i++){
+		//simbolos=[];
+		for (var j=0; j < largo; j++){
+			if (matriz[i][j] != "-" && matriz[i][j] =="e"){
+					console.log("EL automáta no es un AFD, es un AFND-e ["+i+"]["+j+"]="+ matriz[i][j]);
+					return;
+			}	
+		}
+	}
+}
+
 var cheq_si_efd_por_estado = function(){
 	var matriz = global.getMatriz();
 	var largo = matriz.length;
@@ -116,5 +132,6 @@ var recorre_efnd  = function(posNodoIni, arr_pila){
 module.exports = {	
 	cheq_si_efd_por_estado: cheq_si_efd_por_estado,
 	cheq_si_efd_por_simbolo: cheq_si_efd_por_simbolo,
+	cheq_si_efd_por_e: cheq_si_efd_por_e,
 	recorre_efnd: recorre_efnd
 };
