@@ -45,6 +45,8 @@ autom.cheq_si_efd_por_simbolo();
 autom.simplificar_simbolos_agrupados();
 matriz.ver();
 
+autom.definir_matriz_e();
+
 //matriz.agregar_fila();
 //matriz.agregar_columa();
 //matriz.ver();
