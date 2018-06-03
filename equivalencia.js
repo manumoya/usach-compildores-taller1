@@ -1,21 +1,6 @@
 const global = require('./global.js');
 const claus = require('./clausura.js');
 
-/*
-var getCompareArrays = function(arr1, arr2){
-
-	console.log("arr1: "+ arr1);
-	console.log("arr2: "+ arr2);
-
-	if (arr1 == undefined || arr2 == undefined ) {
-		return true;
-	};
-
-    return arr1.length === arr2.length && !arr1.some((v) => arr2.indexOf(v) < 0) && !arr2.some((v) => arr1.indexOf(v) < 0)
-
-}
-*/
-
 var get_estado_si_existe_clausura_en_matriz= function (matriz_afd_analisis, arr_clausura_estado) {
 
 	for (var i=0; i < matriz_afd_analisis.length; i++){
@@ -27,38 +12,10 @@ var get_estado_si_existe_clausura_en_matriz= function (matriz_afd_analisis, arr_
 			return(matriz_afd_analisis[i][3]);
 		}
 	}
-
 	return(-1);
-
-	/*
-	var validacion = -1;
-	console.log ("listNewAnalysis; "+ listNewAnalysis.length ); 
-
-  	for (var i=0; i < listNewAnalysis.length; i++){
-  		console.log("listNewAnalysis["+i+"][1]: " + listNewAnalysis[i][1]);	
-  		console.log("listNewAnalysis["+i+"][2]: " + listNewAnalysis[i][2]);	
-  		console.log("listNewAnalysis["+i+"][3]: " + listNewAnalysis[i][3]);	
-  		console.log("listNewAnalysis["+i+"][4]: " + listNewAnalysis[i][4]);	
-  	}
-
-    listNewAnalysis.forEach(element => {
-   	
-		console.log("element[2]: " + element[2]);
-		
-	    areEquals = getCompareArrays(element[2],listNewStateWithSymbol);
-	        
-        if (areEquals) {
-            return element[3];
-        }
-			
-    });
-    
-    */
-    //return validacion;
-  
-    
 }
 
+/*
 let getListClausuraNewState = function (listNewAnalysis, state) {
 
 
@@ -70,6 +27,7 @@ let getListClausuraNewState = function (listNewAnalysis, state) {
     });
     
 }
+*/
 
 let getTransitionsNewAFD =  function(simbolos, cola_estado_revisar, arr_clausura){
 
