@@ -21,7 +21,6 @@ var definir_matriz_e = function(){
 	var matriz_ady = global.getMatriz();
 	var largo = matriz_ady.length;
 	var matriz_clausura = new Array(largo); 
-	//arr_e=[];
 	for (var i=0; i < largo; i++){
 		var arr_e=[];
 		//console.log ("arr e de: " + i)
@@ -52,12 +51,14 @@ var definir_matriz_e = function(){
 		matriz_clausura[i]=arr_e; 
 	}	
 
+	/*
 	for (var i=0; i<matriz_clausura.length; i++){
-		console.log ("Clausura de "+ i +" :");	
+		//console.log ("Clausura de "+ i +" :");	
 		for (var j=0; j< matriz_clausura[i].length; j++){
 			console.log ("e: " +  matriz_clausura[i][j]);
 		}
 	}	
+	*/
 	
 	global.setMatriz_clausura(matriz_clausura);
 }
@@ -70,27 +71,18 @@ var imprimir_matriz = function(){
 }
 
 var get_clausura_estado = function (estado){
-
-	console.log ("clausura: "+ estado);
+	//console.log ("clausura: "+ estado);
 	var matriz_claus= global.getMatriz_clausura();
 	if (estado != "&"){
 		return matriz_claus[estado];
 	}else{
 		return[];
 	}
-		
 }
 
 var get_clausura_simplificada = function(arr_claus_final,  arr_claus){
-
-	console.log("arr_claus "+ arr_claus.toString() );
-
+	//console.log("arr_claus "+ arr_claus.toString() );
 	for (var i=0; i< arr_claus.length; i++){
-		
-		/*if (arr_claus_final == undefined){
-			conslo.log(undefinido)
-
-		}*/
 		var indx = arr_claus_final.indexOf(arr_claus[i]);
 		if (indx==-1){
 			arr_claus_final.push(arr_claus[i]);
@@ -98,12 +90,7 @@ var get_clausura_simplificada = function(arr_claus_final,  arr_claus){
 		//console.log ("e: " +  matriz_clausura[i][j]);
 	}
 	return arr_claus_final;
-
 }
-
-
-
-//definir_matriz_e: definir_matriz_e
 
 module.exports = {	
 	definir_matriz_e: definir_matriz_e,
@@ -111,12 +98,3 @@ module.exports = {
 	get_clausura_simplificada: get_clausura_simplificada,
 	imprimir_matriz: imprimir_matriz
 };
-
-
-
-
-
-
-
-
-

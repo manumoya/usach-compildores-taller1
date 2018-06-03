@@ -5,29 +5,14 @@ var get_estado_si_existe_clausura_en_matriz= function (matriz_afd_analisis, arr_
 
 	for (var i=0; i < matriz_afd_analisis.length; i++){
 		//console.log("matriz_afd_analisis["+ i +"][2]: " + matriz_afd_analisis[i][2].toString() +" == "+ arr_clausura_estado.toString());
-		console.log("matriz_afd_analisis["+ i +"][2]: " + matriz_afd_analisis[i][2].toString() +" == "+ arr_clausura_estado.toString());
 		
 		if (matriz_afd_analisis[i][2].toString()  == arr_clausura_estado.toString()){
-			console.log(""+ matriz_afd_analisis[i][3]);
+			//console.log(""+ matriz_afd_analisis[i][3]);
 			return(matriz_afd_analisis[i][3]);
 		}
 	}
 	return(-1);
 }
-
-/*
-let getListClausuraNewState = function (listNewAnalysis, state) {
-
-
-
-    listNewAnalysis.forEach(element => {
-        if ( element[3] == state ) {
-            return element[2];
-        }
-    });
-    
-}
-*/
 
 let getTransitionsNewAFD =  function(simbolos, cola_estado_revisar, arr_clausura){
 
@@ -54,35 +39,25 @@ let getTransitionsNewAFD =  function(simbolos, cola_estado_revisar, arr_clausura
             var arr_clausura_estado = [];
             //var arr_clausura_estado = matriz_afd_analisis[estado_cola][2];
 
-            //if (arr_clausura_estado.length==0){
-            	console.log("clausura vacia de "+ estado_cola);
-
-            	for (var i = 0; i < matriz_afd_analisis.length; i++) {
-            		if (matriz_afd_analisis[i][3]==estado_cola){
-            			arr_clausura_estado= matriz_afd_analisis[i][2];
-            			//console.log (matriz_afd_analisis);
-            		}
-            	}
+            //console.log("clausura vacia de "+ estado_cola);
+            for (var i = 0; i < matriz_afd_analisis.length; i++) {
+        		if (matriz_afd_analisis[i][3]==estado_cola){
+        			arr_clausura_estado= matriz_afd_analisis[i][2];
+        			//console.log (matriz_afd_analisis);
+        		}
+        	}
             	
-            //}
-
-
-            //console.log ("matriz afd: "+ matriz_afd_analisis)
-       			
-
-            //console.log(listNewAnalysis[currentState][2]);
-
-       		//obtiene todas las transiciones estado simbolo
-       		console.log("get_arreglo_transiciones(["+  arr_clausura_estado + "],"+ symbol +");");
+          	//obtiene todas las transiciones estado simbolo
+       		//console.log("get_arreglo_transiciones(["+  arr_clausura_estado + "],"+ symbol +");");
 			arr_transiciones = get_arreglo_transiciones(arr_clausura_estado,symbol); 
             //console.log("arr_transiciones: "+ arr_transiciones);
 
             // Ordena el listado obtenido para facilitar la comparasión, y compara
-            console.log("===========*************=============")
-            console.log("estado_cola                  : " + estado_cola);
-            console.log("Symbol                        : " + symbol);
-            console.log("arr_afd_analisis["+ estado_cola +"] : " + arr_clausura_estado);
-            console.log("arr_transiciones        : " + arr_transiciones);
+            //console.log("===========*************=============")
+            //console.log("estado_cola                  : " + estado_cola);
+            //console.log("Symbol                        : " + symbol);
+            //console.log("arr_afd_analisis["+ estado_cola +"] : " + arr_clausura_estado);
+            //console.log("arr_transiciones        : " + arr_transiciones);
             //console.log("========================")
 
             /* definr la clausura de el estado y su simbolo*/
@@ -96,35 +71,30 @@ let getTransitionsNewAFD =  function(simbolos, cola_estado_revisar, arr_clausura
     		//console.log("clausuara final estado: " + arr_clausura_final.toString());
 			
 			var estado_existe = get_estado_si_existe_clausura_en_matriz(matriz_afd_analisis,arr_clausura_final);
-			console.log("estado_existe: " + estado_existe);
+			//console.log("estado_existe: " + estado_existe);
             
 			// Si no encontró otra lista igual
             if ( estado_existe == -1 ) {
-            	console.log("agregar nuevo: "+ arr_clausura_final.toString());
+            	//console.log("agregar nuevo: "+ arr_clausura_final.toString());
             	maxState++;
                 matriz_afd_analisis.push([estado_cola, symbol, arr_clausura_final, maxState]);
                 cola_estado_revisar.add(maxState);
 
             // Si lo encontró, agrega el elemento con nombre de estado encontrado
             }else{
-            	console.log("agregar existente:  "+ arr_clausura_final.toString());
+            	//console.log("agregar existente:  "+ arr_clausura_final.toString());
             	matriz_afd_analisis.push([estado_cola, symbol, arr_clausura_final, estado_existe ]);
             }
-            console.log("========================")
+            //console.log("========================")
+        });
 
-            //console.log(cola_estado_revisar.size()+" --> " + cola_estado_revisar.getFrontElement());
-
-		});
-
-		
-
-        // Cuando se termina de analizar el nuevo estado con todos los simbolos del alfabeto, se saca de la cola
+		// Cuando se termina de analizar el nuevo estado con todos los simbolos del alfabeto, se saca de la cola
         cola_estado_revisar.remove();	
     }
 
-     console.log("----------------");
+    console.log("----------------");
 
-    console.log("*** matriz_afd_analisis largo: "+ matriz_afd_analisis.length);
+    //console.log("*** matriz_afd_analisis largo: "+ matriz_afd_analisis.length);
     	
     	for (var i = 0; i < matriz_afd_analisis.length; i++) {
     		console.log("col ("+ i +")  - " + matriz_afd_analisis[i][0]  + " - "+ matriz_afd_analisis[i][1] +" - "+ matriz_afd_analisis[i][2] +" - "+ matriz_afd_analisis[i][3] );
@@ -135,45 +105,29 @@ let getTransitionsNewAFD =  function(simbolos, cola_estado_revisar, arr_clausura
     var matriz_clausura = global.getMatriz_clausura();
 	claus.imprimir_matriz();
     
-    return matriz_afd_analisis;
+    global.setMatriz_afd_analisis(matriz_afd_analisis);
 
 };
-
-
-
-
-/*
-listNewAnalysis.forEach(element => {
-    console.log(element.toString)
-});
-*/
-
 
 /* =============  */
 
 var get_arreglo_transiciones = function(arr_clau, simbolo){
 	var matriz_ady = global.getMatriz();
-	//var matriz_clausura = global.getMatriz_clausura();
 	var largo = matriz_ady.length;
 	var arr_simb =[];
 
 	if (arr_clau == undefined) {
-		//console.log("Indefinido");
 		return arr_simb
 	};
 	
 	/*  recorre arr clausura */
 	for (var i=0; i < arr_clau.length; i++){
-		console.log ("buscar nodo "+ arr_clau[i] + " con simbolo: "+ simbolo );
+		//console.log ("buscar nodo "+ arr_clau[i] + " con simbolo: "+ simbolo );
 		for (var j=0; j<largo; j++){
-
 			var  ind_estado = arr_clau[i];	
-
 			//console.log ("busca trans: matriz_ady["+ind_estado+"]["+j+"]= "+ matriz_ady[ind_estado][j]);
-
 			if (simbolo == matriz_ady[ind_estado][j]){
 				//console.log("i:"+i+" j:"+j)
-				
 				var indx = arr_simb.indexOf(j);
 				if (indx==-1){
 					arr_simb.push(j);
@@ -182,14 +136,17 @@ var get_arreglo_transiciones = function(arr_clau, simbolo){
 			}
 		}
 	}
+
 	if (arr_simb.length==0){
 		arr_simb.push("&");
 	}
 	
+	/*
 	console.log("largo arr simb ("+ simbolo +") trans:  " +arr_simb.length);
 	for (var i=0; i < arr_simb.length; i++){
 		console.log("nodo transi: " + arr_simb[i]);
 	}
+	*/
 	return arr_simb;
 };
 

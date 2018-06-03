@@ -5,7 +5,8 @@ var info = {
 	estados_finales:[],
 	transiciones:[],
 	matriz:[],
-	matriz_clausura:[]
+	matriz_clausura:[],
+	matriz_afd_analisis:[]
 };
 
 var getNro_estados = function() {
@@ -63,6 +64,15 @@ var setMatriz_clausura = function(matriz){
 var getMatriz_clausura = function(){
 	return info.matriz_clausura;
 }
+
+var getMatriz_afd_analisis = function(){
+	return info.matriz_afd_analisis;
+}
+
+var setMatriz_afd_analisis = function(matriz){
+	return info.matriz_afd_analisis = matriz ;
+}
+
 module.exports = {	
 	getNro_estados: getNro_estados,
 	setNro_estados: setNro_estados,
@@ -77,5 +87,7 @@ module.exports = {
 	getMatriz: getMatriz,
 	setMatriz: setMatriz,
 	setMatriz_clausura: setMatriz_clausura,
-	getMatriz_clausura: getMatriz_clausura
+	getMatriz_clausura: getMatriz_clausura,
+	getMatriz_afd_analisis: getMatriz_afd_analisis,
+	setMatriz_afd_analisis: setMatriz_afd_analisis
 };
