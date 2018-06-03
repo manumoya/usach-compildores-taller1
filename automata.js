@@ -10,11 +10,12 @@ var cheq_si_efd_por_e = function(){
 		//simbolos=[];
 		for (var j=0; j < largo; j++){
 			if (matriz_ady[i][j] != "-" && matriz_ady[i][j] =="e"){
-					console.log("EL automáta no es un AFD, es un AFND-e ["+i+"]["+j+"]="+ matriz_ady[i][j]);
-					return;
+					//console.log("EL automáta no es un AFD, es un AFND-e ["+i+"]["+j+"]="+ matriz_ady[i][j]);
+					return false;
 			}	
 		}
 	}
+	return true;
 }
 
 var cheq_si_efd_por_estado = function(){
@@ -24,18 +25,19 @@ var cheq_si_efd_por_estado = function(){
 	for (var i=0; i < largo; i++){
 		simbolos=[];
 		for (var j=0; j < largo; j++){
-			if (matriz_ady[i][j] != "-"){
+			if (matriz_ady[i][j] != "-" && matriz_ady[i][j] !="e"){
 				var indx = simbolos.indexOf(matriz_ady[i][j]);
 				if (indx==-1){
 					simbolos.push(matriz_ady[i][j]);
 				}else{
-					console.log("EL automáta no es un AFD -validación x estado- ["+i+"]["+j+"]="+ matriz_ady[i][j]);
-					return;
+					//console.log("EL automáta no es un AFD -validación x estado- ["+i+"]["+j+"]="+ matriz_ady[i][j]);
+					return false;
 				}
 			}	
 		}
 	}
-	console.log("El automáta es un AFD");
+	//console.log("El automáta es un AFD");
+	return true;
 }
 
 var cheq_si_efd_por_simbolo = function(){
@@ -50,13 +52,30 @@ var cheq_si_efd_por_simbolo = function(){
 				//console.log(indx);
 
 				if (indx==-1){
-					console.log("EL automáta no es un AFD -validación x simbolos- ["+i+"]["+j+"]="+ matriz_ady[i][j]);
-					return;
+					//console.log("EL automáta no es un AFD -validación x simbolos- ["+i+"]["+j+"]="+ matriz_ady[i][j]);
+					return false;
 				}
 			}	
 		}
 	}
-	console.log("El automáta es un AFD");
+	//console.log("El automáta es un AFD");
+	return true;
+}
+
+var cheq_si_efd = function(){
+	var efd_x_e 	  = cheq_si_efd_por_e();
+	var efd_x_estado  = cheq_si_efd_por_estado();
+	var efd_x_simbolo = cheq_si_efd_por_simbolo();
+
+	if (!efd_x_e){
+		console.log("Es un AFND-e");
+	}
+	if (!efd_x_estado){
+		console.log("Es un AFND, tiene mas de un camino por estado");
+	}
+	if (!efd_x_simbolo){
+		console.log("Es un AFND, tiene mas de un simbolo agrupado");
+	}
 }
 
 var desagrupar = function(origen, final, grupo_simbolo){
@@ -117,6 +136,7 @@ var buscar_e_en_fila = function(fila, arr){
 var definir_matriz_e = function(){
 	var matriz_ady = global.getMatriz();
 	var largo = matriz_ady.length;
+	var matriz_clausura = new Array(largo); 
 	//arr_e=[];
 	for (var i=0; i < largo; i++){
 		var arr_e=[];
@@ -145,22 +165,28 @@ var definir_matriz_e = function(){
 			arr_e.push(i);
 		}
 
-
-		console.log ("arr e de: " + i);	
-		for (var k=0; k< arr_e.length; k++){
-			console.log ("simb: " +  arr_e[k]);
-		}
-		console.log ("====== " )
-		
+		matriz_clausura[i]=arr_e; 
 	}	
 
+	for (var i=0; i<matriz_clausura.length; i++){
+		console.log ("Clausura de "+ i +" :");	
+		for (var j=0; j< matriz_clausura[i].length; j++){
+			console.log ("e: " +  matriz_clausura[i][j]);
+		}
+	}	
+	
+	global.setMatriz_clausura(matriz_clausura);
 }
 
+
+
 module.exports = {	
-	cheq_si_efd_por_estado: cheq_si_efd_por_estado,
-	cheq_si_efd_por_simbolo: cheq_si_efd_por_simbolo,
-	cheq_si_efd_por_e: cheq_si_efd_por_e,
+	//cheq_si_efd_por_estado: cheq_si_efd_por_estado,
+	//cheq_si_efd_por_simbolo: cheq_si_efd_por_simbolo,
+	//cheq_si_efd_por_e: cheq_si_efd_por_e,
+	cheq_si_efd: cheq_si_efd,
 	simplificar_simbolos_agrupados: simplificar_simbolos_agrupados,
 	definir_matriz_e: definir_matriz_e
+	
 
 };

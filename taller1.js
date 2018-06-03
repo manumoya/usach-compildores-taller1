@@ -2,6 +2,7 @@ const readFile = require('./readFile.js');
 const global   = require('./global.js');
 const matriz   = require('./matriz.js');
 const autom    = require('./automata.js');
+const equiv    = require('./equivalencia.js');
 
 /* llear archivo .txt*/
 readFile.read( function (err, result){
@@ -37,15 +38,18 @@ matriz.ver();
 //global.setMatriz(arr_matriz);
 
 /*  validar si es un AFD */
-autom.cheq_si_efd_por_e();
-autom.cheq_si_efd_por_estado();
-autom.cheq_si_efd_por_simbolo();
+autom.cheq_si_efd();
+//autom.cheq_si_efd_por_estado();
+//autom.cheq_si_efd_por_simbolo();
 
 /* convertir en dfd */
 autom.simplificar_simbolos_agrupados();
 matriz.ver();
-
 autom.definir_matriz_e();
+
+/* equivalencia */
+var matriz_clausura = global.getMatriz_clausura();
+equiv.get_arreglo_transiciones(matriz_clausura[0],0);
 
 //matriz.agregar_fila();
 //matriz.agregar_columa();

@@ -4,7 +4,8 @@ var info = {
 	estado_inicial: 0,
 	estados_finales:[],
 	transiciones:[],
-	matriz:[]
+	matriz:[],
+	matriz_clausura:[]
 };
 
 var getNro_estados = function() {
@@ -55,6 +56,13 @@ var setMatriz  = function(param) {
 	info.matriz = param;
 }
 
+var setMatriz_clausura = function(matriz){
+	info.matriz_clausura = matriz;
+}
+
+var getMatriz_clausura = function(){
+	return info.matriz_clausura;
+}
 module.exports = {	
 	getNro_estados: getNro_estados,
 	setNro_estados: setNro_estados,
@@ -67,5 +75,7 @@ module.exports = {
 	push_transiciones: push_transiciones,
 	getTransiciones: getTransiciones,
 	getMatriz: getMatriz,
-	setMatriz: setMatriz
+	setMatriz: setMatriz,
+	setMatriz_clausura: setMatriz_clausura,
+	getMatriz_clausura: getMatriz_clausura
 };
