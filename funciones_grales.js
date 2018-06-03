@@ -1,3 +1,5 @@
+const global   = require('./global.js');
+
 
 /* almacenar valores en un array*/
 var almacenar_en_array = function(valores){
@@ -32,7 +34,23 @@ var getTransicion = function(valores){
 	return(transiciones);	
 }	
 
+var imprimir_datos_entrada = function(){
+	var estados = global.getNro_estados(); 
+	var simbolos = global.getSimbolos();
+	console.log("Estados : " + estados );
+	console.log("Simbolos : " +  simbolos);
+	console.log("Estado inicial : " + global.getEstado_inicial() );
+	console.log("Estados finales: " + global.getEstado_finales() );
+	arr_transiciones = global.getTransiciones();
+
+	for (var i=0; i < arr_transiciones.length; i++){
+			console.log("transicion["+ i+"]= " + arr_transiciones[i].orig +" / "+ 
+						arr_transiciones[i].simb +" / "+ arr_transiciones[i].final);
+	}
+}
+
 module.exports = {	
 	almacenar_en_array: almacenar_en_array,
-	getTransicion: getTransicion
+	getTransicion: getTransicion,
+	imprimir_datos_entrada: imprimir_datos_entrada
 };

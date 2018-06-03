@@ -92,22 +92,29 @@ let getTransitionsNewAFD =  function(simbolos, cola_estado_revisar, arr_clausura
         cola_estado_revisar.remove();	
     }
 
-    console.log("----------------");
+    
 
-    //console.log("*** matriz_afd_analisis largo: "+ matriz_afd_analisis.length);
-    	
-    	for (var i = 0; i < matriz_afd_analisis.length; i++) {
-    		console.log("col ("+ i +")  - " + matriz_afd_analisis[i][0]  + " - "+ matriz_afd_analisis[i][1] +" - "+ matriz_afd_analisis[i][2] +" - "+ matriz_afd_analisis[i][3] );
-    	};
-
-    console.log("----------------");
-
-    var matriz_clausura = global.getMatriz_clausura();
-	claus.imprimir_matriz();
+    //var matriz_clausura = global.getMatriz_clausura();
+	//claus.imprimir_matriz();
     
     global.setMatriz_afd_analisis(matriz_afd_analisis);
 
 };
+
+var imprimir_matriz_analisis = function(){
+	var matriz_analisis =  global.getMatriz_afd_analisis();
+
+	for (var i = 0; i < matriz_analisis.length; i++) {
+		if (i==0){
+			console.log("fila ("+ i +") - C-E("+  matriz_analisis[i][0]  +")={"+ matriz_analisis[i][2] +"}" );
+
+		}else{
+			console.log("fila ("+ i +") - C-E(d("+ matriz_analisis[i][0]+","+ matriz_analisis[i][1]+"))= {"+ matriz_analisis[i][2]+"} = " + matriz_analisis[i][3] );	
+		}
+	};
+
+    //console.log("----------------");
+}
 
 /* =============  */
 
@@ -153,5 +160,6 @@ var get_arreglo_transiciones = function(arr_clau, simbolo){
 
 module.exports = {	
 	get_arreglo_transiciones: get_arreglo_transiciones,
-	getTransitionsNewAFD: getTransitionsNewAFD
+	getTransitionsNewAFD: getTransitionsNewAFD,
+	imprimir_matriz_analisis:imprimir_matriz_analisis
 };
