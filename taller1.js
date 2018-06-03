@@ -2,7 +2,9 @@ const readFile = require('./readFile.js');
 const global   = require('./global.js');
 const matriz   = require('./matriz.js');
 const autom    = require('./automata.js');
+const claus    = require('./clausura.js');
 const equiv    = require('./equivalencia.js');
+
 
 /* llear archivo .txt*/
 readFile.read( function (err, result){
@@ -45,15 +47,20 @@ autom.cheq_si_efd();
 /* convertir en dfd */
 autom.simplificar_simbolos_agrupados();
 matriz.ver();
-autom.definir_matriz_e();
 
-/* equivalencia */
+/* identificar clausura */
+claus.definir_matriz_e();
+
+/* iequivalencias */
 var matriz_clausura = global.getMatriz_clausura();
 equiv.get_arreglo_transiciones(matriz_clausura[0],0);
 
-//matriz.agregar_fila();
-//matriz.agregar_columa();
-//matriz.ver();
+/*
+let queueNewStateAF = new Queue();
+queueNewStateAF.add(0); // Se asigna primer elemento letra A
+let listNewAnalysis = getTransitionsNewAFD(simbolos,queueNewStateAF);
+*/
+
 
 /*
 var arrPila =[];
