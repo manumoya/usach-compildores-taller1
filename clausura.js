@@ -70,6 +70,8 @@ var imprimir_matriz = function(){
 }
 
 var get_clausura_estado = function (estado){
+
+	console.log ("clausura: "+ estado);
 	var matriz_claus= global.getMatriz_clausura();
 	if (estado != "&"){
 		return matriz_claus[estado];
