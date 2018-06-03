@@ -40,7 +40,9 @@ var ver_matriz_ady = function(){
 	var largo_col = matriz_ady[0].length;
 	for (var i=0; i < largo; i++){
 		for (var j=0; j < largo_col; j++){	
-			console.log("arr["+ i+"]["+ j+"]= "+ matriz_ady[i][j]);
+			if (matriz_ady[i][j]!="-"){
+				console.log("arr["+ i+"]["+ j+"]= "+ matriz_ady[i][j]);
+			}
 		}
 	}	
 }

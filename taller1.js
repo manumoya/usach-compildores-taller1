@@ -4,6 +4,7 @@ const matriz   = require('./matriz.js');
 const autom    = require('./automata.js');
 const claus    = require('./clausura.js');
 const equiv    = require('./equivalencia.js');
+var Queue    = require('./cola.js');
 
 
 /* llear archivo .txt*/
@@ -52,14 +53,17 @@ matriz.ver();
 claus.definir_matriz_e();
 
 /* iequivalencias */
-var matriz_clausura = global.getMatriz_clausura();
-equiv.get_arreglo_transiciones(matriz_clausura[0],0);
 
-/*
+console.log(" //////////////////////////////////// ");
+
+var matriz_clausura = global.getMatriz_clausura();
+//equiv.get_arreglo_transiciones(matriz_clausura[0],0);
+
+//claus.imprimir_matriz();
+
 let queueNewStateAF = new Queue();
-queueNewStateAF.add(0); // Se asigna primer elemento letra A
-let listNewAnalysis = getTransitionsNewAFD(simbolos,queueNewStateAF);
-*/
+let listNewAnalysis = equiv.getTransitionsNewAFD(simbolos,queueNewStateAF,matriz_clausura[0]);
+
 
 
 /*

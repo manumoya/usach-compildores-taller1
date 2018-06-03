@@ -62,10 +62,52 @@ var definir_matriz_e = function(){
 	global.setMatriz_clausura(matriz_clausura);
 }
 
-definir_matriz_e: definir_matriz_e
+var imprimir_matriz = function(){
+	var matriz_claus= global.getMatriz_clausura();
+	for (var i=0; i<matriz_claus.length; i++){
+		console.log("clausura("+i+") = "+ matriz_claus[i].toString());
+	}
+}
+
+var get_clausura_estado = function (estado){
+	var matriz_claus= global.getMatriz_clausura();
+	if (estado != "&"){
+		return matriz_claus[estado];
+	}else{
+		return[];
+	}
+		
+}
+
+var get_clausura_simplificada = function(arr_claus_final,  arr_claus){
+
+	console.log("arr_claus "+ arr_claus.toString() );
+
+	for (var i=0; i< arr_claus.length; i++){
+		
+		/*if (arr_claus_final == undefined){
+			conslo.log(undefinido)
+
+		}*/
+		var indx = arr_claus_final.indexOf(arr_claus[i]);
+		if (indx==-1){
+			arr_claus_final.push(arr_claus[i]);
+		}
+		//console.log ("e: " +  matriz_clausura[i][j]);
+	}
+	return arr_claus_final;
+
+}
+
+
+
+//definir_matriz_e: definir_matriz_e
 
 module.exports = {	
-	definir_matriz_e: definir_matriz_e
+	definir_matriz_e: definir_matriz_e,
+	get_clausura_estado: get_clausura_estado,
+	get_clausura_simplificada: get_clausura_simplificada,
+	imprimir_matriz: imprimir_matriz
 };
 
 
