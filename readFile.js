@@ -2,7 +2,7 @@ const fs = require('fs');
 const global   = require('./global.js');
 const fun_grales = require('./funciones_grales.js');
 
-/*  lee archivo  */
+/*  lee archivo  *txt guarda en variables globales los datos */
 var read = function(callback){
 
 	var cont=1;
@@ -28,6 +28,7 @@ var read = function(callback){
 	}); 
 }
 
+/* ejecuta la lectura de archivo .txt */
 var leer_archivo =function(){
 	read( function (err, result){
  	// error
