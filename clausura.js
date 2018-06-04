@@ -7,9 +7,14 @@ var buscar_e_en_fila = function(fila, arr){
 	//console.log("buscar e en fila " + fila);
 	for (var j=0; j < largo; j++){
 		var simbolo = matriz_ady[fila][j];
+
+		//console.log("buscar matriz_ady["+fila+"]["+j+"]=" + simbolo);
+
 		if (simbolo=="e"){
 			var indx = arr.indexOf(j);
 			if (indx == -1){
+
+				//console.log("push "+ j +" arr  matriz_ady["+fila+"]["+j+"]=" + simbolo);
 				arr.push(j);
 			}
 		}
@@ -23,7 +28,8 @@ var definir_matriz_e = function(){
 	var matriz_clausura = new Array(largo); 
 	for (var i=0; i < largo; i++){
 		var arr_e=[];
-		//console.log ("arr e de: " + i)
+		//console.log ("arr e de: " + i);
+		//console.log ("buscar_e_en_fila("+ i +")");
 		arr_e = buscar_e_en_fila(i, arr_e);
 		//console.log (arr_e.length +">0");
 		if (arr_e.length>0){
@@ -49,6 +55,7 @@ var definir_matriz_e = function(){
 		}
 
 		matriz_clausura[i]=arr_e; 
+		//console.log("clausura:" + arr_e);
 	}	
 
 	/*
