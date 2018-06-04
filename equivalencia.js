@@ -16,7 +16,7 @@ var get_estado_si_existe_clausura_en_matriz= function (matriz_afd_analisis, arr_
 }
 
 /*  genera matriz de equivalencia AFND => AFD */
-let getTransitionsNewAFD =  function(simbolos, cola_estado_revisar, arr_clausura){
+var getTransitionsNewAFD =  function(simbolos, cola_estado_revisar, arr_clausura){
 
     var matriz_afd_analisis = [];
     var maxState = 0;
@@ -34,10 +34,13 @@ let getTransitionsNewAFD =  function(simbolos, cola_estado_revisar, arr_clausura
         var estado_cola = cola_estado_revisar.getFrontElement();
         
         // Analiza el estado con cada elemento del alfabeto
-        simbolos.forEach(element => {
+        
+        for (var l = 0; l < simbolos.length; l++) {
+        //simbolos.forEach(element => {
             
 			// Element es la letra del alfabeto que se evaluará 
-            var symbol = element;
+            //var symbol = element;
+            var symbol = simbolos[l];
             var arr_clausura_estado = [];
             //var arr_clausura_estado = matriz_afd_analisis[estado_cola][2];
 
@@ -88,7 +91,7 @@ let getTransitionsNewAFD =  function(simbolos, cola_estado_revisar, arr_clausura
             	matriz_afd_analisis.push([estado_cola, symbol, arr_clausura_final, estado_existe ]);
             }
             //console.log("========================")
-        });
+        }
 
 		// Cuando se termina de analizar el nuevo estado con todos los simbolos del alfabeto, se saca de la cola
         cola_estado_revisar.remove();	
@@ -103,6 +106,7 @@ let getTransitionsNewAFD =  function(simbolos, cola_estado_revisar, arr_clausura
 
 };
 
+/*  imprime pantalla matriz de equivalencia AFND => AFD */
 var imprimir_matriz_analisis = function(){
 	var matriz_analisis =  global.getMatriz_afd_analisis();
 
