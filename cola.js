@@ -1,5 +1,5 @@
+/*  objeto cola para manejar el proceso de equivalencias */
 var Queue = function() {
-    
     var elements = [];
  
     this.add = add;
