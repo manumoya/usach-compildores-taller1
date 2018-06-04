@@ -1,6 +1,7 @@
 const global = require('./global.js');
 const matriz = require('./matriz.js');
 
+/* busca "e" en fila indicada */
 var buscar_e_en_fila = function(fila, arr){
 	var matriz_ady = global.getMatriz();
 	var largo = matriz_ady.length;
@@ -22,6 +23,7 @@ var buscar_e_en_fila = function(fila, arr){
 	return arr;
 }
 
+/* construye matriz de clausura */
 var definir_matriz_e = function(){
 	var matriz_ady = global.getMatriz();
 	var largo = matriz_ady.length;
@@ -70,6 +72,7 @@ var definir_matriz_e = function(){
 	global.setMatriz_clausura(matriz_clausura);
 }
 
+/* imprime pantalla matriz de clausura */
 var imprimir_matriz = function(){
 	var matriz_claus= global.getMatriz_clausura();
 	for (var i=0; i<matriz_claus.length; i++){
@@ -77,6 +80,7 @@ var imprimir_matriz = function(){
 	}
 }
 
+/* obtine la clausura  de un estado*/
 var get_clausura_estado = function (estado){
 	//console.log ("clausura: "+ estado);
 	var matriz_claus= global.getMatriz_clausura();
@@ -87,6 +91,7 @@ var get_clausura_estado = function (estado){
 	}
 }
 
+/* obtine la clausura  sin estados repetidos */
 var get_clausura_simplificada = function(arr_claus_final,  arr_claus){
 	//console.log("arr_claus "+ arr_claus.toString() );
 	for (var i=0; i< arr_claus.length; i++){
