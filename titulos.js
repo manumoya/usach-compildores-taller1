@@ -1,3 +1,5 @@
+/* Desplega titulos por pantalla */
+
 var datos_entrada = function(){
 	console.log("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
 	console.log("|||||||||||   DATOS DE ENTRADA  *.TXT    ||||||||||||||||||");
