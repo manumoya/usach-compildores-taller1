@@ -49,17 +49,6 @@ var imprimir_datos_entrada = function(){
 	}
 }
 
-var leer_archivo =function(){
-	readFile.read( function (err, result){
- 	// error
-	 	if (err) {
-	     	console.log("error:" + err);
-	     	return;	
-	    }
-	    console.log("est: " + global.getNro_estados() );
-	});
-}
-
 module.exports = {	
 	almacenar_en_array: almacenar_en_array,
 	getTransicion: getTransicion,
