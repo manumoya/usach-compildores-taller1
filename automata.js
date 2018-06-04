@@ -2,6 +2,7 @@ const global = require('./global.js');
 //const pila = require('./pila.js');
 const matriz = require('./matriz.js');
 
+/*  valida si automata es AFND-e */
 var cheq_si_efd_por_e = function(){
 	var matriz_ady = global.getMatriz();
 	var largo = matriz_ady.length;
@@ -18,6 +19,7 @@ var cheq_si_efd_por_e = function(){
 	return true;
 }
 
+/*  valida si automata es AFND x validación de estado */
 var cheq_si_efd_por_estado = function(){
 	var matriz_ady = global.getMatriz();
 	var largo = matriz_ady.length;
@@ -40,6 +42,7 @@ var cheq_si_efd_por_estado = function(){
 	return true;
 }
 
+/*  valida si automata es AFND x validación de simbolos */
 var cheq_si_efd_por_simbolo = function(){
 	var matriz_ady = global.getMatriz();
 	var largo = matriz_ady.length;
@@ -62,6 +65,7 @@ var cheq_si_efd_por_simbolo = function(){
 	return true;
 }
 
+/* valida si es un AFND */
 var cheq_si_efd = function(){
 	var efd_x_e 	  = cheq_si_efd_por_e();
 	var efd_x_estado  = cheq_si_efd_por_estado();
@@ -78,6 +82,7 @@ var cheq_si_efd = function(){
 	}
 }
 
+/* desagrupa agregando columna y fila para Automata equivalente */
 var desagrupar = function(origen, final, grupo_simbolo){
 	//console.log ("desagrupar ["+ origen +"]["+ final +"]= "+ grupo_simbolo);
 	var orig = origen;
@@ -101,6 +106,7 @@ var desagrupar = function(origen, final, grupo_simbolo){
 	matriz.guardar_datos(origen,final,"-");
 }
 
+/* simplifica simboloes agrupadas, para crear Automàta equivalente */
 var simplificar_simbolos_agrupados = function(){
 	var matriz_ady = global.getMatriz();
 	var largo = matriz_ady.length;
@@ -114,19 +120,10 @@ var simplificar_simbolos_agrupados = function(){
 	}	
 }
 
-//var existe_en_e = function(){
-//}
-
-
-
-
-
 module.exports = {	
 	//cheq_si_efd_por_estado: cheq_si_efd_por_estado,
 	//cheq_si_efd_por_simbolo: cheq_si_efd_por_simbolo,
 	//cheq_si_efd_por_e: cheq_si_efd_por_e,
 	cheq_si_efd: cheq_si_efd,
 	simplificar_simbolos_agrupados: simplificar_simbolos_agrupados
-	
-
 };
