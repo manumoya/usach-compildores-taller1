@@ -1,6 +1,7 @@
 const global = require('./global.js');
 const claus = require('./clausura.js');
 
+/* valida que la clausura encontrada no este en matriz de equivalencia AFND => AFD  */
 var get_estado_si_existe_clausura_en_matriz= function (matriz_afd_analisis, arr_clausura_estado) {
 
 	for (var i=0; i < matriz_afd_analisis.length; i++){
@@ -14,6 +15,7 @@ var get_estado_si_existe_clausura_en_matriz= function (matriz_afd_analisis, arr_
 	return(-1);
 }
 
+/*  genera matriz de equivalencia AFND => AFD */
 let getTransitionsNewAFD =  function(simbolos, cola_estado_revisar, arr_clausura){
 
     var matriz_afd_analisis = [];
