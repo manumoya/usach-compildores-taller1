@@ -47,3 +47,5 @@ let queueNewStateAF = new Queue();
 let listNewAnalysis = equiv.getTransitionsNewAFD(simbolos,queueNewStateAF,matriz_clausura[0]);
 
 equiv.imprimir_matriz_analisis();
+
+console.log(global.getMatriz_afd_analisis());

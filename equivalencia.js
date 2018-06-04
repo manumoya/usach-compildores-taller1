@@ -118,11 +118,7 @@ var imprimir_matriz_analisis = function(){
 			console.log("fila ("+ i +") - C-E(d("+ matriz_analisis[i][0]+","+ matriz_analisis[i][1]+"))= {"+ matriz_analisis[i][2]+"} = " + matriz_analisis[i][3] );	
 		}
 	};
-
-    //console.log("----------------");
 }
-
-/* =============  */
 
 /* retorna las ransiciones de un arreglo de clausura */
 var get_arreglo_transiciones = function(arr_clau, simbolo){
