@@ -1,4 +1,4 @@
-const readFile = require('./readFile.js');
+
 const global   = require('./global.js');
 const matriz   = require('./matriz.js');
 const autom    = require('./automata.js');
@@ -7,9 +7,13 @@ const equiv    = require('./equivalencia.js');
 var Queue      = require('./cola.js');
 const titulos  = require('./titulos.js');
 const fun_grales = require('./funciones_grales.js');
+const readFile = require('./readFile.js');
 
 
 /* lee archivo .txt*/
+
+readFile.leer_archivo();
+/*
 readFile.read( function (err, result){
  	// error
  	if (err) {
@@ -18,6 +22,7 @@ readFile.read( function (err, result){
     }
     console.log("est: " + global.getNro_estados() );
 });
+*/
 
 /* ver valores leidos de archivo*/
 titulos.datos_entrada();

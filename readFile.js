@@ -27,7 +27,19 @@ var read = function(callback){
 		cont++;
 	}); 
 }
+
+var leer_archivo =function(){
+	read( function (err, result){
+ 	// error
+	 	if (err) {
+	     	console.log("error:" + err);
+	     	return;	
+	    }
+	    console.log("est: " + global.getNro_estados() );
+	});
+}
 	
 module.exports = {	
-	read: read
+	read: read,
+	leer_archivo: leer_archivo
 };
