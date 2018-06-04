@@ -24,7 +24,7 @@ var getTransitionsNewAFD =  function(simbolos, cola_estado_revisar, arr_clausura
 
     // asignar la clausura qo
     arr_clausura.sort();
-	matriz_afd_analisis.push([0,0,arr_clausura,0]);    
+	matriz_afd_analisis.push([0,'-',arr_clausura,0]);    
 	cola_estado_revisar.add(0);
 	
 	// Analiza cada estado del nuevo AF
@@ -79,6 +79,8 @@ var getTransitionsNewAFD =  function(simbolos, cola_estado_revisar, arr_clausura
 			//console.log("estado_existe: " + estado_existe);
             
 			// Si no encontró otra lista igual
+
+			symbol= symbol.replace(/\n$/, '');
             if ( estado_existe == -1 ) {
             	//console.log("agregar nuevo: "+ arr_clausura_final.toString());
             	maxState++;
