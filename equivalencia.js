@@ -124,6 +124,7 @@ var imprimir_matriz_analisis = function(){
 
 /* =============  */
 
+/* retorna las ransiciones de un arreglo de clausura */
 var get_arreglo_transiciones = function(arr_clau, simbolo){
 	var matriz_ady = global.getMatriz();
 	var largo = matriz_ady.length;
