@@ -1,7 +1,6 @@
 const global = require('./global.js');
 
-
-	
+/* crea matriz de adyacencia que almacena el automata */
 var crear_matriz_ady = function(){
 	var largo = global.getNro_estados();
 	var matriz_ady = new Array(largo); 
@@ -11,6 +10,7 @@ var crear_matriz_ady = function(){
 	global.setMatriz(matriz_ady);
 }
 
+/*  completa con '-' los espacios vacios de la matriz */
 var set_incial_matriz = function(){
 	var matriz = global.getMatriz();
 	var largo = matriz.length;
@@ -23,6 +23,7 @@ var set_incial_matriz = function(){
 	global.setMatriz(matriz);
 }
 
+/* completa la matriz de adyacencia con las transiciones de entrada*/
 var llenar_matriz_ady = function(){
 	var arr_transiciones = global.getTransiciones();
 	var matriz_ady = global.getMatriz();
@@ -34,6 +35,7 @@ var llenar_matriz_ady = function(){
 	}	
 }
 
+/* imprime por pantalla la matriz de adyacencia sin los espacios vacios */
 var ver_matriz_ady = function(){
 	var matriz_ady = global.getMatriz();
 	var largo = matriz_ady.length;
@@ -47,6 +49,7 @@ var ver_matriz_ady = function(){
 	}	
 }
 
+/* prepara fila con '-' cuando construye automata equivalente*/
 var get_incial_fila = function(largo){
 	fila = new Array(largo);
 	for (var i=0; i < largo; i++){
@@ -55,7 +58,7 @@ var get_incial_fila = function(largo){
 	return fila;
 }
 
-
+/* agregar fila cuando construye automata equivalente*/
 var agregar_fila = function (){
 	var matriz_ady = global.getMatriz();
 	var largo = matriz_ady.length;
@@ -63,6 +66,7 @@ var agregar_fila = function (){
 	matriz_ady.push(fila);
 }
 
+/* agregar columna cuando construye automata equivalente*/
 var agregar_columa = function (){
 	var matriz_ady = global.getMatriz();
 	var largo = matriz_ady.length;
@@ -71,6 +75,7 @@ var agregar_columa = function (){
 	}
 }
 
+/* almacena los datos segun posicion en matriz de adyacencia */
 var guardar_datos = function(ini, fin, simbolo){
 	var matriz_ady = global.getMatriz();
 	matriz_ady[ini][fin]=simbolo;
