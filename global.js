@@ -1,3 +1,5 @@
+/* El objetivo es almacenar las variables globales */
+
 var info = {
 	nro_estados: 0,
 	simbolos:[],
